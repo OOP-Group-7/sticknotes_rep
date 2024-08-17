@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+                           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+                           http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
+
+    <!-- Enable annotation-driven controllers -->
+    <mvc:annotation-driven />
+<beans>
+    
+<!--     <context:component-scan base-package="controller" />-->
+    <!-- URL Mapping -->
+    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="index.htm">indexController</prop>
+                <prop key="/registerForm.htm">registerController</prop>
+                <prop key="/login.htm">loginController</prop>
+                <prop key="/limitForm.htm">limitNote</prop>
+                <prop key="/adminDashboard.htm">adminPage</prop>
+                <prop key="/manageUser.htm">manageUsers</prop>
+                <prop key="/register.htm">registerUsers</prop>
+                <prop key="/userController.htm">userManageController</prop>
+                <prop key="/approveForm.htm">approveUsers</prop>
+                <prop key="/viewUserRegistered.htm">UserList</prop>
+                <prop key="/viewUserList.htm">secondList</prop>
+                <prop key="/registerSuccess.htm">registerSuccess</prop>
+<!--                 <prop key="/approveUser.htm">approve</prop>-->
+                <prop key="/dashboard.htm">dash</prop>
+<!--                <prop key="/registerFailure.htm">registerFailure</prop>-->
+<!--                <prop key="/processRegister.htm">processRegisterController</prop>-->
+                <prop key="/loginController.htm">processLoginController</prop>
+                <prop key="/controller1.htm">noteController</prop>
+                 <prop key="/logout.htm">logout</prop>
+                 <prop key="/viewNote.htm">viewNote</prop>
+                 <prop key="/editNote.htm">edit_note</prop>
+                 <prop key="/dashboard1.htm">dashboard1</prop>
+
+            </props>
+           
+        </property>
+    </bean>
+
+    <!-- View Resolver -->
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:prefix="/WEB-INF/jsp/"
+          p:suffix=".jsp" />
+
+    <!-- Index Controller -->
+    <bean name="indexController"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="index" />
+    <bean name="dashboard1"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="dashboard1" />
+    <bean name="dash"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="dashboard" />
+    
+      <bean name="edit_note"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="editNote" />
+    
+      <bean name="viewNote"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="viewNote" />
+      
+    <bean name="limitNote"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="limitForm" />
+    <bean name="UserList"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="viewUserRegistered" />
+      
+    
+    <bean name="registerSuccess"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="registerSuccess" />
+    
+<!--    <bean name="registerFailure"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="registerFailure" />    -->
+    <bean id="registerController"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+        <property name="viewName" value="registerForm"/>
+    </bean>
+    
+     <bean id="manageUsers"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+        <property name="viewName" value="manageUser"/>
+    </bean>
+     <bean id="secondList"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+        <property name="viewName" value="viewUserList"/>
+    </bean>
+
+    <!-- Login Controller -->
+    <bean id="loginController"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+        <property name="viewName" value="loginForm"/>
+    </bean>
+    
+<bean id="approveUsers"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+        <property name="viewName" value="approveForm"/>
+    </bean>
+    <bean id="adminPage"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+        <property name="viewName" value="adminDashboard"/>
+    </bean>
+<!--
+    <bean id="processRegisterController"
+          class="controller.ProcessRegisterController" />-->
+
+    <!-- Process Login Controller -->
+    <bean id="processLoginController"
+          class="controller.loginController" />
+    
+     <bean id="noteController"
+          class="controller.controller1" />
+    
+    <bean id="registerUsers"
+          class="controller.RegistrationController" />
+    <bean id="userManageController"
+          class="controller.userManageController" />
+    <bean id="logout"
+          class="controller.logoutController" />
+     
+<!--     <bean id="approve"
+          class="controller.userController" />-->
+     
+</beans>
+</beans>
